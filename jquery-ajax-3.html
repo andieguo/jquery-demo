@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/json2.js"></script>
+<script>
+$(document).ready(function(){
+  $("#btn1").click(function(){
+	  $.ajax({
+		url: "http://localhost:8080/RestWeb/rest/result/userid/23710173/channal/00_12_4B_00_01_49_2C_42_A0/type/day",
+		type: "get",
+		dataType: "json",
+      	contentType:"application/json",  
+		complete:function(){$("#load").hide();},
+		success:function(msg){//返回的msg是一个json对象
+			console.log('msg：',msg); 
+			var jsonObj = eval(msg); //将String转换为json对象
+			console.log("jsonObj:",jsonObj);
+			var text = JSON.stringify(msg); //将json对象转换为String
+			console.log("text:",text);
+			//JSON解析只会识别JSON文本并且它更安全,下面调用json的parse函数对文本数据转换生成json数据结构 
+			//var obj = JSON.parse(jsontext);
+			console.log("obj:"+obj);
+		},
+		error:function()
+		{  
+	    		alert("系统出现问题");      
+		} 
+	});
+  });
+});
+
+</script>
+</head>
+<body>
+<button id="btn1">向页面发送 HTTP GET 请求，然后获得返回的结果</button>
+<button id="load">loading</button>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="js/jquery.min.js">
+</script>
+<script>
+$(document).ready(function(){
+  $("p").click(function(){
+    $(this).hide();
+  });
+
+  $("#btn1").click(function(){
+    alert("Text: " + $("#test1").text());
+  });
+  $("#btn2").click(function(){
+    alert("HTML: " + $("#test1").html());
+  });
+  $("#btn3").click(function(){
+    alert($("#w3s").attr("href"));
+  });
+  $("#btn4").click(function(){
+    alert("Value: " + $("#test4").val());
+  });
+});
+
+</script>
+</head>
+<body>
+<p>如果您点击我，我会消失。</p>
+<p>点击我，我会消失。</p>
+<p>也要点击我哦。</p>
+
+<hr>
+
+<p id="test1">这是段落中的<b>粗体</b>文本。</p>
+<button id="btn1">显示文本</button>
+<button id="btn2">显示 HTML</button>
+
+<hr>
+
+<p><a href="http://www.w3school.com.cn" id="w3s">W3School.com.cn</a></p>
+<button id="btn3">显示 href 值</button>
+
+<hr>
+
+<p>姓名：<input type="text" id="test4" value="米老鼠"></p>
+<button id="btn4">显示值</button>
+
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="js/jquery.min.js">
+</script>
+<script>
+$(document).ready(function(){
+
+	var a={"name":"tom","sex":"男","age":"24"};
+	var b='{"name":"Mike","sex":"女","age":"29"}';
+	var aToStr=JSON.stringify(a);
+	var bToObj=JSON.parse(b);
+
+	console.log("a:",typeof(a));//object
+	console.log("b:",typeof(b));//string
+	console.log("aToStr:",typeof(aToStr));//string
+	console.log("bToObj:",typeof(bToObj));//object
+
+	/**====================================================**/
+	function User(name, data) {
+		this.name = name;
+		this.data = data;
+	}
+	var userObj = new User('New York', [-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]);
+	console.log("userObj",typeof(userObj),userObj,userObj.name,userObj.data);
+
+	var userStr = JSON.stringify(new User('New York', [-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]));//将json对象转换为String
+	console.log("userStr",userStr);
+
+	var datas = [];
+	datas[0] = new User('New York', [-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]);
+	datas[1] = new User('Berlin', [-0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0]);
+
+	var data = [{
+	    name: 'New York',
+	    data: [-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]
+	}, {
+	    name: 'Berlin',
+	    data: [-0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0]
+	}, {
+	    name: 'London',
+	    data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+	}];
+
+	console.log("data:",data);
+	console.log("name",data[0].name);
+	console.log("data",data[0].data[0]);
+
+	var data0 = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun','Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+	var data1 =  {"queryResult":[{"at":"2015-04","avg":"24.007515","channal":"00_12_4B_00_01_49_2C_42_A0","classify":"{\"300-!\":0,\"150-200\":0,\"0-50\":479,\"200-250\":0,\"250-300\":0,\"100-150\":0,\"50-100\":0}","max":"24.6","min":"23.3","type":"month","userid":"23710173"},{"at":"2015-06","avg":"17.316446","channal":"00_12_4B_00_01_49_2C_42_A0","classify":"{\"300-!\":0,\"150-200\":0,\"0-50\":13560,\"200-250\":0,\"250-300\":0,\"100-150\":0,\"50-100\":0}","max":"31.0","min":"0.0","type":"month","userid":"23710173"},{"at":"2015-07","avg":"27.998356","channal":"00_12_4B_00_01_49_2C_42_A0","classify":"{\"300-!\":0,\"150-200\":0,\"0-50\":68745,\"200-250\":0,\"250-300\":0,\"100-150\":0,\"50-100\":0}","max":"31.0","min":"23.0","type":"month","userid":"23710173"},{"at":"2015-08","avg":"28.601093","channal":"00_12_4B_00_01_49_2C_42_A0","classify":"{\"300-!\":0,\"150-200\":0,\"0-50\":62743,\"200-250\":1,\"250-300\":0,\"100-150\":0,\"50-100\":0}","max":"224.0","min":"0.0","type":"month","userid":"23710173"},{"at":"2015-09","avg":"27.878372","channal":"00_12_4B_00_01_49_2C_42_A0","classify":"{\"300-!\":0,\"150-200\":0,\"0-50\":68792,\"200-250\":0,\"250-300\":0,\"100-150\":0,\"50-100\":0}","max":"37.0","min":"23.0","type":"month","userid":"23710173"},{"at":"2015-10","avg":"25.603035","channal":"00_12_4B_00_01_49_2C_42_A0","classify":"{\"300-!\":0,\"150-200\":0,\"0-50\":31955,\"200-250\":0,\"250-300\":0,\"100-150\":0,\"50-100\":0}","max":"31.0","min":"20.0","type":"month","userid":"23710173"},{"at":"2015-11","avg":"21.386372","channal":"00_12_4B_00_01_49_2C_42_A0","classify":"{\"300-!\":0,\"150-200\":0,\"0-50\":5298,\"200-250\":0,\"250-300\":0,\"100-150\":0,\"50-100\":0}","max":"29.0","min":"19.0","type":"month","userid":"23710173"}]};
+
+	var data2 =  {"queryResult":{"at":"2015","avg":"27.088282","channal":"00_12_4B_00_01_49_2C_42_A0","classify":"{\"300-!\":0,\"150-200\":0,\"0-50\":254168,\"200-250\":1,\"250-300\":0,\"100-150\":0,\"50-100\":0}","max":"224.0","min":"0.0","type":"year","userid":"23710173"}};
+	console.log("instanceof-1:",data1.queryResult instanceof Array);
+	console.log("instanceof-2:",data2.queryResult instanceof Array);
+	//data2 = JSON.parse(data2);
+	var result1 = data1.queryResult;
+	var result2 = data2.queryResult;
+	console.log("result1:",result1);
+	console.log("data1-at:",result1[0].at);	
+	console.log("data2-at:",result2.at);
+	
+	//var min = new Array(),max = new Array(),avg = new Array(),at = new Array(),classgod = new Array();
+	var at=[],min=[],max=[],avg=[],classify=[];
+	for(var i=0;i<data1.queryResult.length;i++){
+		at[i] = data1.queryResult[i].at;
+		min[i] = data1.queryResult[i].min;
+		max[i] = data1.queryResult[i].max;
+		avg[i] = data1.queryResult[i].avg;
+		classify[i] = data1.queryResult[i].classify;
+	}
+	console.log("at:",at);
+	console.log("min:",min);
+	console.log("max:",max);
+	console.log("avg:",avg);
+	console.log("classify:",classify);
+	var dd = "{\"300-!\":0,\"150-200\":0,\"0-50\":5298,\"200-250\":0,\"250-300\":0,\"100-150\":0,\"50-100\":0}";
+	var odd = JSON.parse(dd);
+	console.log("dd:",dd);
+	console.log("odd:",odd["300-!"]);
+	var length = classify.length;
+	var god = [[],[],[],[],[],[],[]];
+	var cls = ["0-50","50-100","100-150","150-200","200-250","250-300","300-!"];
+	console.log("dd",cls[5]);
+	for(var i=0;i<classify.length;i++){
+		var odd = JSON.parse(classify[i]);
+		god[0][i] = odd["0-50"];
+		god[1][i] = odd["50-100"];
+		god[2][i] = odd["100-150"];
+		god[3][i] = odd["150-200"];
+		god[4][i] = odd["200-250"];
+		god[5][i] = odd["250-300"];
+		god[6][i] = odd["300-!"];
+	}
+	console.log("god:",god);
+	function Result(name, data) {
+		this.name = name;
+		this.data = data;
+	}
+	var queryResults = [];
+	queryResults[0] = new Result("min",min); 
+	queryResults[1] = new Result("max",max); 
+	queryResults[2] = new Result("avg",avg); 
+	console.log("queryResults",queryResults);
+	var queryResults = JSON.stringify(queryResults);////将json对象转换为String
+	var obj = eval(queryResults);
+	console.log("obj",obj);
+	console.log("queryResults",queryResults);
+	/*=======*/
+	var ok = [];
+	for(var i=0;i<cls.length;i++){
+		ok[i] = new Result(cls[i],god[i]);
+	}
+	console.log("ok:",ok);
+
+});
+
+</script>
+</head>
+<body>
+<button id="btn1">向页面发送 HTTP GET 请求，然后获得返回的结果</button>
+<button id="load">loading</button>
+</body>
+
+</html>
